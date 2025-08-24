@@ -1,0 +1,20 @@
+saucedemo-playwright/
+├─ package.json
+├─ playwright.config.ts
+├─ tsconfig.json
+├─ README.md
+├─ src/
+│  ├─ pages/
+│  │  ├─ LoginPage.ts
+│  │  ├─ InventoryPage.ts
+│  │  ├─ CartPage.ts
+│  │  ├─ CheckoutPage.ts
+│  │  └─ CheckoutCompletePage.ts
+│  ├─ utils/
+│  │  └─ price.ts
+├─ tests/
+│  ├─ fixtures.ts
+│  ├─ auth.spec.ts
+│  ├─ inventory.spec.ts
+│  ├─ e2e.spec.ts
+│  └─ advanced.spec.ts
