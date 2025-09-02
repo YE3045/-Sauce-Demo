@@ -1,5 +1,3 @@
-l# 1) create a safe branch (only if you haven't already)
-
 name: CI - Playwright Tests
 
 on:
