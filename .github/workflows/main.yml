@@ -21,23 +21,7 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run tests
-        run: npx playwright test
-
-      - name: Upload HTML report
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: playwright-html-report
-          path: playwright-report
-
-      - name: Upload JUnit report
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: junit-report
-          path: test-results/results.xml
-          - name: Run Playwright tests
+      - name: Run Playwright tests
         run: npx playwright test
 
       - name: Upload Playwright HTML report
