@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "commonjs",
-    "lib": ["ESNext", "DOM"],
+    "target": "ESNext",
+    "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "outDir": "dist",
-    "sourceMap": true,
-    "moduleResolution": "node"
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["src/pages/*"],
+      "@tests/*": ["tests/*"]
+    }
   },
   "include": ["src", "tests"]
 }
