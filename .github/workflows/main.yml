@@ -1,9 +1,5 @@
 # 1) create a safe branch (only if you haven't already)
-git checkout -b ci/add-workflow
 
-# 2) create the workflow file
-mkdir -p .github/workflows
-cat > .github/workflows/ci.yml <<'YML'
 name: CI - Playwright Tests
 
 on:
