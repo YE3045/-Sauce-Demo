@@ -1,21 +1,34 @@
-import { test as base, Page } from '@playwright/test';
+import { test as base, Page, BrowserContext, expect } from '@playwright/test';
 import { LoginPage } from '../src/pages/LoginPage';
 
 type Fixtures = {
+  context: BrowserContext;
+  page: Page;
   loggedInPage: Page;
 };
 
 export const test = base.extend<Fixtures>({
-  loggedInPage: async ({ browser }, use) => {
-    // Create a fresh context and page, login as standard_user and provide the page.
+  // Fresh context for each test
+  context: async ({ browser }, use) => {
     const context = await browser.newContext();
-    const page = await context.newPage();
-    const login = new LoginPage(page);
-    await login.goto();
-    await login.login('standard_user', 'secret_sauce');
-    await use(page);
+    await use(context);
     await context.close();
-  }
+  },
+
+  // Fresh page for each test
+  page: async ({ context }, use) => {
+    const page = await context.newPage();
+    await use(page);
+    await page.close();
+  },
+
+  // Logged-in page fixture
+  loggedInPage: async ({ page }, use) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+    await loginPage.login('standard_user', 'secret_sauce');
+    await use(page);
+  },
 });
 
-export { expect } from '@playwright/test';
+export { expect };
