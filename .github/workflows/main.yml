@@ -37,3 +37,20 @@ jobs:
         with:
           name: junit-report
           path: test-results/results.xml
+          - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-html-report
+          path: playwright-report
+
+      - name: Upload JUnit report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: junit-report
+          path: test-results/results.xml
+          if-no-files-found: ignore
