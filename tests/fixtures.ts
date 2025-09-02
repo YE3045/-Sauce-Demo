@@ -1,6 +1,5 @@
 import { test as base, Page, BrowserContext, expect } from '@playwright/test';
-import { LoginPage } from '../src/pages/LoginPage';
-
+import { LoginPage } from '@pages/LoginPage';
 type Fixtures = {
   context: BrowserContext;
   page: Page;
