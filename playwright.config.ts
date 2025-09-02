@@ -1,10 +1,14 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-  testDir: 'tests',
-  timeout: 60_000,
-  expect: { timeout: 5000 },
-  retries: process.env.CI ? 2 : 0,
+  testDir: './tests',
+
+  reporter: [
+    ['dot'],
+    ['html'],
+    ['junit', { outputFile: 'test-results/results.xml' }]
+  ],
+
   use: {
     headless: true,
     baseURL: 'https://www.saucedemo.com',
@@ -12,7 +16,11 @@ export default defineConfig({
     actionTimeout: 20_000,
     navigationTimeout: 30_000
   },
+
   projects: [
-    { name: 'chromium', use: { browserName: 'chromium' } }
+    {
+      name: 'chromium',
+      use: { browserName: 'chromium' }
+    }
   ]
 });
